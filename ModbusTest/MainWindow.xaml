@@ -6,10 +6,45 @@
         xmlns:local="clr-namespace:ModbusTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
+    <Window.Style>
+        <Style TargetType="Window">
+            
+            
+            
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Connected}" Value="true">
+                    <Setter Property="Background" Value="LimeGreen"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Connected}" Value="false">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
+        
+    </Window.Style>
     
 
     <Viewbox>
-        <TextBlock Text="{Binding Weight}"/>
+        <TextBlock Text="{Binding Weight}">
+
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Connected}" Value="true">
+                        <Setter Property="Foreground" Value="White"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Connected}" Value="false">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </DataTrigger>
+                </Style.Triggers>
+                
+                </Style>
+            </TextBlock.Style>
+            
+        </TextBlock>
+
     </Viewbox>
 </Window>
