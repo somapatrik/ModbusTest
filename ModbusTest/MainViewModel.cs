@@ -1,5 +1,4 @@
 ﻿using EasyModbus;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ModbusTest
@@ -20,8 +19,9 @@ namespace ModbusTest
 
         public MainViewModel()
         {
-            client = new ModbusClient("127.0.0.1", 502); // 192.168.0.254
-            AsyncInit();
+            client = new ModbusClient("192.168.72.48", 502); // 192.168.0.254
+            client.Connect();
+            AsyncInit();          
         }
 
         private async void AsyncInit()
@@ -34,15 +34,18 @@ namespace ModbusTest
             while (true)
             {
                 decimal w = -1;
-                Connected = client.Available(200);
+                Connected = client.Available(300);
                 try
                 {
-                    
-
-                    if (!client.Available(200) || !client.Connected)
+                    if (!Connected)
+                    {
+                        client.Disconnect();
                         client.Connect();
+                    }
                     else
+                    {
                         w = ((decimal)client.ReadHoldingRegisters(10, 1)[0]) / 100;
+                    }
                 }
                 catch {}
                 finally 

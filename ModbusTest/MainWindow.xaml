@@ -14,7 +14,7 @@
             
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Connected}" Value="true">
-                    <Setter Property="Background" Value="LimeGreen"/>
+                    <Setter Property="Background" Value="White"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Connected}" Value="false">
                     <Setter Property="Background" Value="Red"/>
@@ -34,10 +34,10 @@
                     
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Connected}" Value="true">
-                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Foreground" Value="Black"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Connected}" Value="false">
-                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Foreground" Value="White"/>
                     </DataTrigger>
                 </Style.Triggers>
                 
